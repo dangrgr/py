@@ -1,0 +1,193 @@
+[PyNet] Learning Python: Week3 (Conditionals and For Loops)
+
+In this email of Learning Python we are going to cover the following:
+
+      I. Introduction Week3
+         video https://vimeo.com/120754390
+         Length is 2 minutes
+
+     II. If Conditionals
+         video http://youtu.be/5lHWv9hkSn8
+         Length is 17 minutes
+
+    III. For Loops
+         video http://youtu.be/VR0ggQuClOM
+         Length is 15 minutes
+
+    IV. Passing Arguments into a Script
+         video http://youtu.be/mUt0uJmD9y4
+         Length is 4 minutes
+
+Make sure that you set your video resolution in YouTube to at least 360p (480p or 720p are better assuming your Internet connection has sufficient bandwidth). The settings button is at the bottom of the video and looks like a little gear.
+
+
+Additional content that you may be interested in
+
+Note, I made a comment at the end of the for loop video that could be misconstrued. You cannot use 'break' or 'continue' with if/else conditionals; you can use 'break' or 'continue' with both for and while loops. 
+
+Python2 vs Python3 (relevant differences for beginners):
+    http://www.cs.carleton.edu/faculty/jgoldfea/cs201/spring11/Python2vs3.pdf
+
+
+
+Darren O'Connor has a recent blog post about passing arguments into a Python script (Darren is a dual-CCIE, JNCIE who has some blog posts about Python):
+    http://mellowd.co.uk/ccie/?p=5126
+
+
+
+For more complicated argument parsing check out Argparse (requires Python 2.7) or getopt:
+    https://docs.python.org/2/howto/argparse.html
+
+
+Exercises
+
+Reference code for these exercises is posted on GitHub at:
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class3
+
+Note, some of the exercises use lengthy strings that get modified when embedded in HTML.  You can also grab the exercise strings from the above GitHub site. The strings should be embedded in the relevant exercise.
+
+
+
+I. Create an IP address converter (dotted decimal to binary).  This will be similar to what we did in class2 except:
+
+    A. Make the IP address a command-line argument instead of prompting the user for it.
+        ./binary_converter.py 10.88.17.23
+
+    B. Simplify the script logic by using the flow-control statements that we learned in this class.
+
+    C. Zero-pad the digits such that the binary output is always 8-binary digits long.  Strip off the leading '0b' characters.  For example,
+
+        OLD:     0b1010
+        NEW:    00001010
+
+    D. Print to standard output using a dotted binary format.  For example,
+
+        IP address          Binary
+      10.88.17.23        00001010.01011000.00010001.00010111
+
+
+    Note, you might need to use a 'while' loop and a 'break' statement for part C.
+
+        while True:
+            ...
+            break       # on some condition (exit the while loop)
+
+    Python will execute this loop again and again until the 'break' is encountered. 
+
+
+II. Modify the 'show ip bgp' exercise from class2.   Simplify the program using the flow-control statements from this class.
+
+
+III. You have the following 'show ip int brief' output.
+
+show_ip_int_brief = '''
+Interface            IP-Address      OK?     Method      Status     Protocol
+FastEthernet0   unassigned      YES     unset          up          up
+FastEthernet1   unassigned      YES     unset          up          up
+FastEthernet2   unassigned      YES     unset          down      down
+FastEthernet3   unassigned      YES     unset          up          up
+FastEthernet4    6.9.4.10          YES     NVRAM       up          up
+NVI0                  6.9.4.10          YES     unset           up          up
+Tunnel1            16.25.253.2     YES     NVRAM       up          down
+Tunnel2            16.25.253.6     YES     NVRAM       up          down
+Vlan1                unassigned      YES    NVRAM       down      down
+Vlan10              10.220.88.1     YES     NVRAM       up          up
+Vlan20              192.168.0.1     YES     NVRAM       down      down
+Vlan100            10.220.84.1     YES     NVRAM       up          up
+'''
+
+From this output, create a list where each element in the list is a tuple consisting of (interface_name, ip_address, status, protocol).  Only include interfaces that are in the up/up state.
+
+Print this list to standard output.
+
+
+IV. Create a script that checks the validity of an IP address.  The IP address should be supplied on the command line.
+    A. Check that the IP address contains 4 octets.
+    B. The first octet must be between 1 - 223.
+    C. The first octet cannot be 127.
+    D. The IP address cannot be in the 169.254.X.X address space.
+    E. The last three octets must range between 0 - 255.
+
+    For output, print the IP and whether it is valid or not.
+
+
+
+
+
+
+
+CLASS OUTLINE
+
+I. Introduction
+
+II. Conditionals (if / else)
+    A. Expanded meaning of true and false
+    B. Comparison operators (==, !=, >, >=, <, <=)
+    C. If statements - syntax and structure
+    D. Nested if/else statements
+
+III. For loops
+     A. Iterating over a list
+     B. Tracking indexes
+          1. Method1 - manually tracking index
+          2. Method2 - using range(len(a_list))
+          3. Method3 - enumerate
+     C. Continue, break, and pass
+
+IV. Passing arguments to a script
+
+
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+Week2
+Introduction
+Print and raw_input
+Numbers 
+Lists and Tuples 
+Booleans
+
+
+
+
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
+
+
+1235 Connecticut St
+San Francisco CA 94107
+USA
+Unsubscribe | Change Subscriber Options
+
+
+0 New
+
+Reply
+
+Kirk Byers
+Pinned
+[PyNet] - Python, Paramiko SSH, and Network Devices
+
+Compassion International
+Pinned
+We know you're busy, let us help!
+Let us help you ensure your sponsored child receives letters! Sponsored children love receiving
+[PyNet] Learning Python: Week3 (Conditionals and For Loops), 1 message.

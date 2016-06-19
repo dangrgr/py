@@ -1,0 +1,14 @@
+''		#False
+'whatever'   	#True
+
+0     		#False
+0.0   		#False
+
+[]		#False
+()		#False
+
+{}		#False
+
+a = None	#False
+
+
