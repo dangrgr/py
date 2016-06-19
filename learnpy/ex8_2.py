@@ -5,3 +5,4 @@ A. Create three functions in three separate modules and put them in a show_versi
   2. Function2 = obtain_uptime -- process the show version output and return the network device's uptime string (uptime is 12 weeks, 5 days, 1 hour, 4 minutes) else return None.
   3. Function3 = obtain_model -- process the show version output and return the model (881) else return None.
 '''
+
