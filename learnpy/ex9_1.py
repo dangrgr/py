@@ -26,7 +26,7 @@ class IPAddress(object):
 	#init method
 	def __init__(self, ip):
 		self.ip = ip
-	
+
 	#Return IPAddress in dotted binary format
 	def display_in_binary(self):
 		octets = self.ip.split('.')
@@ -41,7 +41,7 @@ class IPAddress(object):
 			bin_octets.append(bin_octet)
 		bin_octets = '.'.join(bin_octets)
 		return bin_octets
-	
+
 	#Return IPAddress in dotted hex format
 	def display_in_hex(self):
 		octets = self.ip.split('.')
