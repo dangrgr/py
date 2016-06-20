@@ -1,11 +1,16 @@
 #!/c/Python27/python
 
-a = 100
-print __name__
+class NetworkDevice(object):
+	def __init__(self, ip, username, password):
+		self.ip = ip
+		self.username = username
+		self.password = password
 
-def some_func():
-	print "Inside some_func"
+	def connect_to_device(self):
+		...
 
-if __name__ == '__main__':
-	print "hello"
-	print "world"
+	def enter_enable_mode(self):
+		...
+
+	def show_version(self):
+		...
