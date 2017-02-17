@@ -1,0 +1,57 @@
+Paramiko Notes:
+>>> from getpass import getpass
+>>> import paramiko
+>>> 
+>>> ip_addr = '184.105.247.71'
+>>> username = 'pyclass'
+>>> passwword = getpass()
+Password: 
+>>> 
+>>> port = 22
+>>> remote_conn_pre=paramiko.SSHClient()
+>>> remote_conn_pre.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>>> remote_conn_pre.connect(ip_addr, username=username, password=password, look_for_keys=False, allow_agent=False, port=port)
+>>> 
+>>> stdin, stdout, stderr = remote_conn_pre.exec_command('show ip int brief')
+>>> print stdout.read()
+
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0              unassigned      YES unset  down                  down    
+FastEthernet1              unassigned      YES unset  down                  down    
+FastEthernet2              unassigned      YES unset  down                  down    
+FastEthernet3              unassigned      YES unset  down                  down    
+FastEthernet4              10.220.88.21    YES NVRAM  up                    up      
+Loopback999                unassigned      YES unset  up                    up      
+Vlan1                      unassigned      YES unset  down                  down    
+>>> 
+>>> 
+###### Method to allow multiple commands within single channel using .invoke_shell() #####
+>>> 
+>>> 
+>>> remote_conn = remote_conn_pre.invoke_shell()
+>>> 
+>>> outp = remote_conn.recv(5000)
+>>> print outp
+pynet-rtr1#
+>>> 
+>>> outp = remote_conn.send("terminal length 0\n")
+>>> outp = remote_conn.recv(65535)
+>>> print outp
+terminal length 0
+pynet-rtr2#
+>>> 
+>>> 
+>>> 
+>>> outp = remote_conn.send("show run\n")
+>>> outp = remote_conn.recv(65535)
+>>> print outp
+show run
+Building configuration...
+
+Current configuration : 2424 bytes
+!
+! Last configuration change at 09:45:28 PST Thu Feb 16 2017 by pyclass
+! NVRAM config last updated at 12:05:11 PST Wed Feb 15 2017 by pyclass
+!
+version 15.4
+

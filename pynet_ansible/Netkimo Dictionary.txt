@@ -1,0 +1,52 @@
+Netkimo Dictionary.txt
+
+pynet1 = {
+    'device_type': 'cisco_ios',
+    'ip': '184.105.247.70',
+    'username': 'pyclass',
+    'password': password,
+    }
+
+pynet2 = {
+	'device_type': 'cisco_ios',	
+    'ip': '184.105.247.71',
+    'username': 'pyclass',
+    'password': password,
+    'port': 22,
+	}
+
+pynet_sw1 = {
+	'device_type': 'arista_eos',	
+    'ip': '184.105.247.72',
+    'username': 'admin1',
+    'password': password,
+	}
+
+pynet_sw2 = {
+	'device_type': 'arista_eos',	
+    'ip': '184.105.247.73',
+    'username': 'admin1',
+    'password': password,
+	}
+
+pynet_sw3 = {
+	'device_type': 'arista_eos',	
+    'ip': '184.105.247.74',
+    'username': 'admin1',
+    'password': password,
+	}
+
+pynet_sw4 = {
+	'device_type': 'arista_eos',	
+    'ip': '184.105.247.75',
+    'username': 'admin1',
+    'password': password,
+	}
+
+pynet_srx1 = {
+	'device_type': 'juniper',	
+    'ip': '184.105.247.76',
+    'username': 'pyclass',
+    'password': password,
+    'secret': '',
+	}

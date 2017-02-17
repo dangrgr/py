@@ -1,0 +1,91 @@
+There are two components in your lab environment:
+1. An AWS server
+2. A set of test routers and switches that you can execute your code against.
+
+
+AWS Server
+AWS AMI Server (RedHat-based)
+Python 2.7.12
+virtualenv (so you can install Python libraries without sudo privileges)
+PySNMP, Paramiko and several other libraries are already installed
+
+You should be able to SSH into this server. I will send you your username and password in a separate email.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hostname = pylab10b.twb-tech.com
+username = dgrindall
+password = 0hiHwfx78h
+community_string = galileo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Note, the lab environment is using Python's virtualenv; consequently, you will need to the use the following at the top of your Python files:
+
+#!/usr/bin/env python
+
+This will help ensure that the correct Python is used (i.e. the virtualenv Python that has all the necessary libraries).
+
+
+
+Lab Environment Network Devices:
+
+The lab environment network devices consist of:
+    2 x Cisco 881 routers
+    4 x Arista vEOS switches
+    1 x Juniper SRX
+
+Note, the lab environment previously used port address translations. This is no longer the case. Consequently, all of the ports are now standard (SSH = TCP22, SNMP = UDP161, EAPI = TCP443).
+
+
+In general, you will only be able to access the lab network devices from the lab server.
+
+pynet-rtr1 (Cisco 881)
+    ip_addr = 184.105.247.70
+    snmp_port = 161
+    ssh_port = 22
+    username = pyclass
+    password = 88newclass
+
+pynet-rtr2 (Cisco 881)
+    ip_addr = 184.105.247.71
+    snmp_port = 161
+    ssh_port = 22
+    username = pyclass
+    password = 88newclass
+
+pynet-sw1 (Arista vEOS switch)
+    ip_addr = 184.105.247.72
+    ssh_port = 22
+    eapi_port = 443
+    username = admin1
+    password = 99saturday
+
+pynet-sw2 (Arista vEOS switch) 
+    ip_addr = 184.105.247.73
+    ssh_port = 22
+    eapi_port = 443
+    username = admin1
+    password = 99saturday
+
+pynet-sw3 (Arista vEOS switch) 
+    ip_addr = 184.105.247.74
+    ssh_port = 22
+    eapi_port = 443
+    username = admin1
+    password = 99saturday
+
+pynet-sw4 (Arista vEOS switch) 
+    ip_addr = 184.105.247.75
+    ssh_port = 22
+    eapi_port = 443
+    username = admin1
+    password = 99saturday
+
+pynet-jnpr-srx1 (Juniper SRX)
+    ip_addr = 184.105.247.76
+    ssh_port = 22
+    netconf_port = 830
+    username = pyclass
+    password = 88newclass
+
+​​​​​

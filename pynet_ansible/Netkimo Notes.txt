@@ -1,0 +1,164 @@
+Netkimo Notes.txt
+
+>>> from netmiko import ConnectHandler
+>>> from getpass import getpass       
+>>> password = getpass()              
+Password: 
+>>> 
+>>> pynet1 = {
+...     'device_type': 'cisco_ios',
+...     'ip': '184.105.247.70',
+...     'username': 'pyclass',
+...     'password': password,
+...     }
+>>> 
+>>> pynet2 = {
+...     'device_type': 'cisco_ios',     
+...     'ip': '184.105.247.71',
+...     'username': 'pyclass',
+...     'password': password,
+...     'port': 22,
+...     }
+>>> 
+>>> pynet_srx1 = {
+...     'device_type': 'juniper',       
+...     'ip': '184.105.247.76',
+...     'username': 'pyclass',
+...     'password': password,
+...     'secret': '',
+...     }
+>>> 
+>>> 
+>>> 
+>>> pynet_rtr1 = ConnectHandler(**pynet1)              
+>>> pynet_rtr2 = ConnectHandler(**pynet2) 
+>>> srx = ConnectHandler(**pynet_srx1)
+>>> 
+>>> 
+>>> pynet_rtr1
+<netmiko.cisco.cisco_ios.CiscoIosSSH object at 0x7f57f65c2450>
+>>> dir(pynet_rtr1)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_autodetect_fs', '_connect_params_dict', '_read_channel_expect', '_read_channel_timing', '_sanitize_output', '_use_ssh_config', 'allow_agent', 'alt_host_keys', 'alt_key_file', 'ansi_escape_codes', 'base_prompt', 'check_config_mode', 'check_enable_mode', 'cleanup', 'clear_buffer', 'commit', 'config_mode', 'device_type', 'disable_paging', 'disconnect', 'enable', 'establish_connection', 'exit_config_mode', 'exit_enable_mode', 'find_prompt', 'global_delay_factor', 'host', 'ip', 'key_file', 'key_policy', 'normalize_cmd', 'normalize_linefeeds', 'password', 'port', 'protocol', 'read_channel', 'read_until_pattern', 'read_until_prompt', 'read_until_prompt_or_pattern', 'remote_conn', 'remote_conn_pre', 'secret', 'select_delay_factor', 'send_command', 'send_command_expect', 'send_command_timing', 'send_config_from_file', 'send_config_set', 'session_preparation', 'set_base_prompt', 'set_terminal_width', 'special_login_handler', 'ssh_config_file', 'strip_ansi_escape_codes', 'strip_backspaces', 'strip_command', 'strip_prompt', 'system_host_keys', 'telnet_login', 'timeout', 'use_keys', 'username', 'verbose', 'write_channel']
+>>> 
+>>> 
+>>> pynet_rtr1.find_prompt()
+u'pynet-rtr1#'
+>>> pynet_rtr2.find_prompt()
+u'pynet-rtr2#'
+>>> srx.find_prompt()       
+u'pyclass@test123>'
+>>> 
+>>> 
+>>> pynet_rtr1.check_config_mode() 
+False
+>>> 
+>>> pynet_rtr1.config_mode()
+u'config term\r\nEnter configuration commands, one per line.  End with CNTL/Z.\r\npynet-rtr1(config)#'
+>>> 
+>>> pynet_rtr1.check_config_mode()
+True
+>>> 
+>>> pynet_rtr1.exit_config_mode()
+u'end\r\npynet-rtr1#'
+>>> 
+>>> 
+>>> outp = pynet_rtr1.send_command("show ip int brief")
+p>>> print outp
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0              unassigned      YES unset  down                  down    
+FastEthernet1              unassigned      YES unset  down                  down    
+FastEthernet2              unassigned      YES unset  down                  down    
+FastEthernet3              unassigned      YES unset  down                  down    
+FastEthernet4              10.220.88.20    YES NVRAM  up                    up      
+Vlan1                      unassigned      YES unset  down                  down    
+>>> 
+>>> outp = pynet_rtr1.send_command("show run | inc loggingn")
+>>> outp = pynet_rtr1.send_command("show run | inc logging") 
+>>> 
+>>> print outp
+logging buffered 19999
+no logging console
+>>> 
+>>> config_commands = ['logging buffered 19999']
+>>> outp = pynet_rtr1.send_config_set(config_commands)
+>>> print outpp
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'outpp' is not defined
+>>> print outp
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+pynet-rtr1(config)#logging buffered 19999
+pynet-rtr1(config)#end
+pynet-rtr1#
+>>> 
+>>> pynet_rtr1.check_config_mode()                     
+False
+>>>
+>>> 
+>>> 
+>>> outp = srx.send_command("show arp")
+>>> print outp
+
+MAC Address       Address         Name                      Interface           Flags
+00:62:ec:29:70:fe 10.220.88.1     10.220.88.1               vlan.0              none
+c8:9c:1d:ea:0e:b6 10.220.88.20    10.220.88.20              vlan.0              none
+Total entries: 2
+
+>>> 
+>>> 
+>>> outp = srx.config_mode()
+>>> print outp
+configure 
+Entering configuration mode
+Users currently editing the configuration:
+  root terminal u0 (pid 23534) on since 2016-12-28 20:59:23 EST, idle 7w1d 12:00
+      [edit]
+
+[edit]
+pyclass@test123# 
+>>> outp = srx.find_prompt()
+>>> 
+>>> print outp
+pyclass@test123#
+>>> 
+>>> outp = srx.send_command("rollback 1")
+>>> print outp
+
+load complete
+
+>>> outp = srx.send_command("show | compare")
+>>> print outp
+
+[edit system]
+-  host-name test123;
++  host-name gigel;
+
+>>> outp = srx.commit()
+>>>
+>>> srx.exit_config_mode()
+>>>
+>>> srx.find_prompt()
+u'pyclass@gigel>'
+>>> 
+>>> config_commands = ['set system name-server 8.8.8.8']
+>>> outp = srx.send_config_set(config_commands)
+>>> print outp
+configure 
+Entering configuration mode
+Users currently editing the configuration:
+  root terminal u0 (pid 23534) on since 2016-12-28 20:59:23 EST, idle 7w1d 12:13
+      [edit]
+  pyclass terminal p1 (pid 53460) on since 2017-02-17 09:11:52 EST, idle 00:02:39
+      [edit]
+
+[edit]
+pyclass@gigel# set system name-server 8.8.8.8 
+
+[edit]
+pyclass@gigel# exit configuration-mode 
+The configuration has been changed but not committed
+Exiting configuration mode
+
+pyclass@gigel> 
+>>> 
