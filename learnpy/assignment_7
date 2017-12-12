@@ -1,0 +1,231 @@
+In this email of Learning Python we are going to cover the following:
+
+     I. Files
+           video http://youtu.be/Hjr3ev1dJWo
+           Length is 15 minutes
+
+    II. Regular Expressions
+        video http://youtu.be/EjpPivmkbWI
+        Length is 14 minutes
+
+Make sure that you set your video resolution in YouTube to at least 360p.  The resolution button is at the bottom of the video and looks like a little gear.
+
+
+
+
+
+Regular Expression Humor:
+
+  http://xkcd.com/208/
+
+
+
+
+
+Additional content that you may be interested in:
+
+Google Developers - "Python Regular Expressions".  Good content on regular expressions in Python; I recommend that you read through this.
+  https://developers.google.com/edu/python/regular-expressions
+
+
+"Dive Into Python" - Regular Expressions.  I recommend that you work through sections 7.1 and 7.2.
+  http://www.diveintopython.net/regular_expressions/
+  http://www.diveintopython.net/regular_expressions/street_addresses.html
+
+
+A brief article on using regular expressions on network devices:
+  http://packetpushers.net/regular-expressions-for-network-engineers/
+
+
+
+The following web page has details on the different Python file open modes:
+  http://www.tutorialspoint.com/python/python_files_io.htm
+
+See the table (about 1/3 of the way down the page) with the column headers "Modes" and "Description" in "the open Function" section ("r", "rb", "r+", "rb+", etc.). 
+
+
+
+
+
+Exercises:
+
+Reference code for these exercises is posted on GitHub at:
+  https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class7
+
+
+The 'show ip ospf interface' output is courtesy of Darren O'Connor see:
+  http://mellowd.co.uk/ccie/?p=5097  
+
+
+
+1. In the following directory there are six CDP files: 
+  https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class7/CDP_DATA
+
+These CDP files correspond to the following network (same network as exercise1 from class #5):
+  https://pynet.twb-tech.com/static/img/simple_diagram1.png​
+
+   a. Create a program that opens the 'r1_cdp.txt' file and using regular expressions extracts the remote hostname, remote IP address, model, vendor, and device_type.
+
+   b. Create a program that opens the 'sw1_cdp.txt' file and finds all of the remote hostnames, remote IP addresses, and remote platforms.  Your output should look similar to the following:
+
+   remote_hosts: ['R1', 'R2', 'R3', 'R4', 'R5']
+                    IPs: ['10.1.1.1', '10.1.1.2', '10.1.1.3', '10.1.1.4', '10.1.1.5']
+            platform: ['Cisco 881', 'Cisco 881', 'Cisco 881', 'Cisco 881', 'Cisco 881']
+
+
+2. In the following directory there is a file 'ospf_single_interface.txt':
+
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class7/OSPF_DATA
+
+Open this file and extract the interface, IP address, area, type, cost, hello timer, and dead timer.  Use regular expressions to accomplish your extraction.
+
+Your output should look similar to the following:
+
+Int:        GigabitEthernet0/1
+IP:        172.16.13.150/29
+Area:    30395
+Type:    BROADCAST
+Cost:    1
+Hello:   10
+Dead:   40
+
+
+3.  In the following directory there is a file 'ospf_data.txt':
+
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class7/OSPF_DATA
+
+This file contains the output from 'show ip ospf interface'.  Using functions and regular expressions parse this output to display the following (note, I ended up using re.split() as part of the solution to this problem):
+
+Int:     Loopback0
+IP:     10.90.3.38/32
+Area: 30395
+Type: LOOPBACK
+Cost: 1
+
+Int:     GigabitEthernet0/1
+IP:      172.16.13.150/29
+Area:  30395
+Type:  BROADCAST
+Cost:  1
+Hello: 10
+Dead: 40
+
+Int:      GigabitEthernet0/0.2561
+IP:      10.22.0.117/30
+Area:  30395
+Type:  POINT_TO_POINT
+Cost:  1
+Hello: 10
+Dead: 40
+
+
+4. Experiment with 'glob' (see below)
+
+Using the glob library you can more easily open a set of files.  Notice how I use the shell '*' character to match *_cdp.txt.  I could then open all of these files and process the data inside of them.
+
+>>>> CODE <<<<
+
+# This code assumes that all of the CDP files are in a subdirectory called 
+# CDP_DATA beneath the current working directory 
+
+>>> from glob import glob
+>>> cdp_files = glob('CDP_DATA/*_cdp.txt')
+
+>>> cdp_files
+['CDP_DATA/r1_cdp.txt', 'CDP_DATA/r2_cdp.txt', 'CDP_DATA/r3_cdp.txt',  'CDP_DATA/sw1_cdp.txt', 'CDP_DATA/r4_cdp.txt', 'CDP_DATA/r5_cdp.txt']
+
+>>>> END CODE <<<<
+
+
+
+
+
+CLASS OUTLINE
+
+I. Files
+
+   A. Reading a file
+        1. f = open("a_file")
+        2. readlines() method
+        3. seek() method
+        4. readline() method
+        5. read() method
+        6. directly iterating over a file
+        7. close() method
+
+    B. Writing a file
+        1. Caution when writing binary files on Windows
+        2. Caution not to overwrite existing files
+        3. f = open("newfile", "w")
+        4. write() method
+        5. flush() method
+
+    C. Appending to a file
+        1. f = open("appendfile", "a")
+
+    D. Using with
+        1. with open("a_file") as f:
+
+
+II. Regular expressions
+
+    A. Using re.search()
+        1. Always use raw strings for the pattern
+        2. Using .group() for retrieval
+        3. Saving parts of pattern using ()
+        4. + and * are by default greedy
+        5. Making + and * non-greedy
+
+    B. Using re.findall()
+        1. findall() with parenthesis
+        2. findall() with multiple () returns a list of tuples
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+Week2
+Introduction
+Print and raw_input
+Numbers 
+Lists and Tuples 
+Booleans
+
+Week3
+Introduction
+If Conditionals
+For Loops
+Passing Arguments into a Script
+
+Week4
+Introduction
+While Loops
+Dictionaries
+Exceptions
+
+Week5
+Class Review (weeks 1 - 4)
+
+Week6
+Introduction
+Functions, Part1
+Namespaces
+Functions, Part2
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
