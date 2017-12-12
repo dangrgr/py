@@ -1,0 +1,223 @@
+In this email of Learning Python we are going to cover the following:
+
+      I. Introduction and Some Questions
+            video https://vimeo.com/119478712
+         Length is 11 minutes
+         The 'Some Questions' section continues into the first 1:12 of the next video
+
+      II. Characteristics of Python    
+         video https://vimeo.com/119480935
+         Length is 7 minutes
+
+    III. Interpreter Shell, Variables, and Assignment
+         video http://youtu.be/6ja4KlejT-g 
+         Length is 8 minutes
+
+   IV. Strings
+         video http://youtu.be/ItIE8hItji8
+         Length is 19 minutes
+
+Note, you might need to install Flash Player to get the videos to work.  I had to do this on FireFox on MacOs.
+
+Make sure that you set your video resolution in YouTube to at least 360p (480p or 720p are better assuming your Internet connection has sufficient bandwidth). The settings button is at the bottom of the video and looks like a little gear.
+
+
+
+
+
+
+Additional content that might be helpful:
+
+Jeremy Stretch had a good article on 'Learn Python' on packetlife.net:
+     http://packetlife.net/blog/2014/mar/27/learn-python/
+
+
+Chris Young has a page listing various Python resources for network engineers:
+     http://kontrolissues.net/python-for-network-engineers-resources/
+
+
+The book, 'Learn Python the Hard Way' is a good resource for individuals that are completely new to programming:
+     http://learnpythonthehardway.org/book/
+
+
+The book 'Treading on Python, Vol 1: Foundations" by Matt Harrison is a very good resource for individuals learning Python:
+​     http://www.amazon.com/Treading-Python-1-Foundations/dp/1475266413/
+
+
+
+
+
+Additional content related to the videos:
+
+1. Python naming conventions:
+
+    a. For variable names, function names, object names, and module names use lower case separated by underscore, for example:
+
+     my_router 
+     find_set_of_devices
+     convert_id_string_to_list
+
+    b. For class names, capitalize the first letter of each word.  Do not use any underscores.  For example:
+
+     ManyToManyField
+     ClientHistory
+     UserProfile
+
+    c. For constants, use all upper case; use underscores for word separation.
+
+     PI = 3.14
+     EMAIL_MODE
+     EMAIL_FROM_ADDRESS
+
+
+2. Indentation: 
+
+I stated on the video that indentation matters in Python, but I did not provide any examples.  Here is some example code showing you indentation.  We haven't talked about 'if conditionals' so this code is just to show you an example of indentation.
+
+>>>>> CODE <<<<<
+
+a = 10
+b = 20
+
+if a == 10:
+    print 'First level of indentation'
+
+    if b == 20:
+        print 'Second level of indentation'
+        print 'Be consistent in your indentation'
+        print 'Use four spaces for each level'
+
+    print 'I am now out of the second if statement'
+
+print 'I am now out of the first if statement'
+
+>>>>> END <<<<<
+
+Note, the first if statement is terminated by a colon; after the colon you see some indented Python statements.  Everything at this first indentation level is part of the first block (i.e. it will be executed if the first 'if' statement is True).  
+
+The second if statement starts a new block of code (and a new indentation level).  Once again the if statement is terminated by a colon.  
+
+You indicate the end of each section (block of code) by ending the indentation.
+
+
+3. Comments
+
+I also didn't mention in the videos that you can indicate a comment by using the # character (all the characters after the pound sign are ignored).
+
+# This is a comment
+
+a = 10        # and so is this 
+
+
+4. How to pipe <stdin> into a Python script (Linux and MacOS)
+
+Python supports a way that you can pipe data into it (on Linux and MacOS).  You can then process the data you sent into it line-by-line (see below).
+
+Note, some of these statements we haven't talked about yet (import and for loops). Consequently, if this doesn't make any sense, just skip this section.
+
+>>>>> CODE (file test3.py) <<<<<
+
+#!/usr/bin/env python
+
+import fileinput
+
+for line in fileinput.input():
+    print line.split(".")
+
+>>>>> END <<<<<
+
+Here is an example using this script where I echo an IP address into it and then the IP address is split into its octets.
+
+$ echo '192.168.1.1'  | ./test3.py 
+['192', '168', '1', '1\n']
+
+
+
+
+
+
+
+
+
+Some Exercises
+
+Reference code for these exercises is posted on GitHub at:
+
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class1
+
+
+1. Use the split method to divide the following IPv6 address into groups of 4 hex digits (i.e. split on the ":")
+
+FE80:0000:0000:0000:0101:A3EF:EE1E:1719
+
+
+2. Use the join method to reunite your split IPv6 address back to its original value.
+
+
+3. In the test3.py script above, how would you modify this to remove the trailing newline on the end of 192.168.1.1? 
+
+ 
+
+
+
+
+
+CLASS OUTLINE
+
+I. Introduction
+    A. About Me
+    B. Purpose of the course
+    C. Logistics
+    D. Feedback
+    E. Balance for various levels of existing skills
+
+II. Some Questions
+    A. Why learn programming at all?
+    B. Why Python?
+    C. Python2 vs Python3
+
+III. What is the nature of Python?
+     A. The Zen of Python (try "import this" at the Python interpreter shell)
+
+IV. Interpreter Shell, Variables, and Assignment
+     A. Enough with all of the preliminaries, let's get to some code
+     B. Lauching the Interpreter Shell
+         1. History
+         2. Cntl-a, Cntl-e (home/end on Windows)
+         3. Cntl-d or exit()
+     C. What is the Interpreter Shell / what is it useful for?
+     D. Variables and assignment
+         1. Variable names can include alphanumeric and underscore, but can't begin with a number
+         2. Variable names are case-sensitive
+         3. Variables beginning with _something, __something, or __something__ are special; avoid creating variables beginning with an underscore (for now).
+
+V. Strings.
+    A. Dynamically Typed Language
+    B. String assignment - single quotes, double quotes, triple quotes
+    C. Characteristics of strings
+        1. Accessing individual letters
+        2. Strings are immutable
+    D. Raw strings
+    E. Unicode strings
+    F. String methods
+        1. strip()
+        2. split()
+        3. join()
+   G. Using help() and dir()
+   H. Substring in String
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
+
+
+1235 Connecticut St
+San Francisco CA 94107
+USA
+Unsubscribe | Change Subscriber Options
