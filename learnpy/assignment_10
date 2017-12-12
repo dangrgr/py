@@ -1,0 +1,251 @@
+In this class we are going to do just one exercise. This exercise will consist of connecting to a network device via SSH or telnet, executing a show command, parsing the output, and saving the information to a file. This exercise is specified in more detail below.  
+
+Beneath the exercise, there are also a series of videos on--1)using Python's SSH/telnet libraries to connect to a network device, and 2)how to save Python objects to a file using pickle.
+
+
+
+
+
+Exercise
+
+Reference code for these exercises is posted on GitHub at:
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class10
+
+
+Create a script that can login to a network device (using either telnet or SSH) and retrieve 'show version' from the device.  
+
+Process the 'show version' output and store the below attributes in a NetworkDevice object:
+
+NetworkObject
+    hostname
+    ip
+    username   
+    password 
+    device_type            # router, switch, firewall, etc.
+    vendor
+    model
+    os_version
+    uptime                        # seconds
+    serial_number
+
+
+
+This object should be stored to a file using pickle. 
+
+I am assuming that you have a test or lab network device that you can test your code against.  
+
+
+
+
+
+Videos
+
+       I. Introduction
+          video http://youtu.be/6ABYJst9XVM
+          Length is 2 minutes
+
+      II. SSH to a router (Part1)
+          video http://youtu.be/ZUWV0GdKueE
+          Length is 9 minutes
+
+     III. SSH to a router (Part2)
+          video http://youtu.be/jQhTNXIXkfQ
+          Length is 15 minutes
+
+    IV. Telnet to a router
+          video http://youtu.be/jb_NLzre9h8
+          Length is 10 minutes
+
+     V. Pickle
+         video http://youtu.be/ZJOJjyhhEvM
+         Length is 6 minutes
+
+Make sure that you set your video resolution in YouTube to at least 360p.  The resolution button is at the bottom of the video and looks like a little gear.
+
+
+
+
+
+
+Additional Note About Paramiko:
+
+Paramiko, by default, will try to use your SSH keys to connect to the network device. This can cause problems as the username and password that you specify will not be used (if SSH keys exist). Similarly, the existence of an SSH agent can cause Paramiko connection problems. Consequently, you should add the following two arguments to your Paramiko connect() statement:
+
++    remote_conn_pre.connect(ip, username=username, password=password,
++                            look_for_keys=False, allow_agent=False)
+
+
+
+
+
+Installing Paramiko:
+
+Note: my Paramiko SSH videos were created and tested using Paramiko 1.7.7.1 (which is old). I also tested the script (that was created during the video) using Paramiko 1.14.0. 
+
+If you have issues getting Paramiko installed, which is entirely possible, feel free to email me.
+
+
+Linux:
+
+http://paramiko-www.readthedocs.org/installing.html
+
+Note: you might also have to install PIP:
+https://pip.pypa.io/en/latest/installing.html#install-pip
+
+
+
+MacOS:
+
+For MacOS, I used Homebrew and installed a separate version of Python onto my system. See the following document for details:
+http://docs.python-guide.org/en/latest/starting/install/osx/​
+
+Note, I did the following before installing the new Python:
+brew doctor
+brew update
+brew install python
+
+
+After Homebrew and the new Python are installed, I did the following:
+pip install --upgrade setuptools
+pip install --upgrade pip
+pip install pycrypto
+pip install paramiko
+
+This will separate the Python you use for development from the system Python (and also install Paramiko).
+
+Note, there is a lot of context here regarding your environment that I don't know (which packages you already have installed, whether you want to use the system Python or a separate Python, which version of MacOS you are using). The above worked well for me on MacOS Yosemite.
+
+
+Windows:
+
+Download and install the right PyCrypto executable for your machine:
+http://www.voidspace.org.uk/python/modules.shtml#pycrypto
+
+Download and install pip:
+https://pip.pypa.io/en/latest/installing.html#install-pip
+
+Then from the command prompt:
+> pip install paramiko
+> pip install ecdsa
+
+Note, if you are using Windows and 64-bit Python, you might run into an import issue with winrandom. 
+
+
+
+
+
+Additional content that you may be interested in:
+
+My blog post on "Python, Paramiko SSH, and Network Devices":
+https://pynet.twb-tech.com/blog/python/paramiko-ssh-part1.html
+
+
+
+Pexpect is a Python library that creates an interaction somewhat similar to using Expect.  I am not a big fan of either Expect or Pexpect so you will have to decide if this is valuable to you.
+http://pexpect.readthedocs.org/en/latest/overview.html
+
+
+
+Scapy is an interesting library for creating packets of various types.  "Introduction to Scapy" by Jeremy Stretch:
+http://packetlife.net/blog/2011/may/23/introduction-scapy/
+
+
+
+
+
+
+
+TABLE OF CONTENTS
+
+I. Introduction
+
+II. Paramiko SSH
+     A. Establish a connection
+     B. Read from the SSH channel
+     C. Send a command down the SSH channel
+     D. Close the connection
+     E. Disable paging on the router
+
+III. Telnetlib
+       A. Establish a connection
+       B. Close the connection
+       C. Use .read_until() and .write() to login to the router
+     D. Use .read_very_eager()
+       E. Send a command down the telnet channel
+       F. Disable paging on the router
+
+IV. Pickle
+       A. What is pickle?
+       B. Using pickle to write objects to a file
+       C. Using pickle to read objects from a file
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+Week2
+Introduction
+Print and raw_input
+Numbers 
+Lists and Tuples 
+Booleans
+
+Week3
+Introduction
+If Conditionals
+For Loops
+Passing Arguments into a Script
+
+Week4
+Introduction
+While Loops
+Dictionaries
+Exceptions
+
+Week5
+Class Review (weeks 1 - 4)
+
+Week6
+Introduction
+Functions, Part1
+Namespaces
+Functions, Part2
+
+Week7
+Files
+Regular Expressions
+
+Week8
+Modules - Part1
+Modules - Part2
+Packages
+
+Week9
+Introduction
+Classes and Objects - Part1
+Classes and Objects - Part2
+
+Week10
+Introduction
+SSH to a router - Part1
+SSH to a router - Part2
+Telnet to a router
+Pickle
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
