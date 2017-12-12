@@ -1,0 +1,224 @@
+In this email of Learning Python we are going to cover the following:
+
+      I. Introduction Week2
+         video http://youtu.be/uqGZXPfX00E
+         Length is 2 minutes
+
+     II. Print and raw_input
+         video http://youtu.be/pEXUxySxygg
+         Length is 14 minutes
+
+    III. Numbers
+         video http://youtu.be/n5ZO8rRcWbA
+         Length is 12 minutes
+
+    IV. Lists and Tuples
+         video http://youtu.be/nUOMXXhQgZQ
+         Length is 14 minutes
+
+     V. Booleans
+         video http://youtu.be/gCpRBt7pw-0
+         Length is 5 minutes
+
+
+Make sure that you set your video resolution in YouTube to at least 360p (480p or 720p are better assuming your Internet connection has sufficient bandwidth). The settings button is at the bottom of the video and looks like a little gear.
+
+
+
+
+
+Additional content you may be interested in:
+
+Packet Pushers podcast on 'Intro to Python & Automation for Network Engineers':
+
+http://packetpushers.net/show-176-intro-to-python-automation-for-network-engineers/
+
+
+Google's Python Class:
+
+https://developers.google.com/edu/python/?csw=1
+
+
+
+
+
+Humor:
+
+https://www.python.org/doc/humor/#python-vs-perl-according-to-yoda
+
+
+http://stackoverflow.com/questions/234075/what-is-your-best-programmer-joke
+
+Q: How do you tell an introverted computer scientist from an extroverted computer scientist?
+
+A: An extroverted computer scientist looks at your shoes when he talks to you.
+
+
+
+Exercises:
+
+Reference code for these questions is posted at:
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class2
+
+
+
+I. Create a script that does the following
+
+    A. Prompts the user to input an IP network.
+
+        Notes:
+        1. For simplicity the network is always assumed to be a /24 network
+
+        2. The network can be entered in using one of the following three formats 10.88.17.0, 10.88.17., or 10.88.17
+
+    B. Regardless of which of the three formats is used, store this IP network as a list in the following format ['10', '88', '17', '0'] i.e. a list with four octets (all strings), the last octet is always zero (a string).
+
+        Hint: There is a way you can accomplish this using a list slice.
+
+        Hint2: If you can't solve this question with a list slice, then try using the below if statement (note, we haven't discussed if/else conditionals yet; we will talk about them in the next class).
+
+>>>> CODE <<<<
+
+if len(octets) == 3:
+    octets.append('0')
+elif len(octets) == 4:
+    octets[3] = '0'
+
+>>>> END <<<<
+
+
+    C. Print the IP network out to the screen.
+
+    D. Print a table that looks like the following (columns 20 characters in width):
+
+      NETWORK_NUMBER   FIRST_OCTET_BINARY      FIRST_OCTET_HEX
+      88.19.107.0                    0b1011000                            0x58
+
+
+II. Create an IP address converter (dotted decimal to binary):
+
+    A. Prompt a user for an IP address in dotted decimal format.
+
+    B. Convert this IP address to binary and display the binary result on the screen (a binary string for each octet).
+
+    Example output:
+    first_octet    second_octet     third_octet    fourth_octet
+    0b1010        0b1011000        0b1010         0b10011
+
+      
+
+III. You have the following four lines from 'show ip bgp':
+
+entry1 = "*  1.0.192.0/18   157.130.10.233        0 701 38040 9737 i"
+entry2 = "*  1.1.1.0/24       157.130.10.233        0 701 1299 15169 i"
+entry3 = "*  1.1.42.0/24     157.130.10.233        0 701 9505 17408 2.1465 i"
+entry4 = "*  1.0.192.0/19   157.130.10.233        0 701 6762 6762 6762 6762 38040 9737 i"
+
+Note, in each case the AS_PATH starts with '701'.
+
+Using split() and a list slice, how could you process each of these such that--for each entry, you return an ip_prefix and the AS_PATH (the ip_prefix should be a string; the AS_PATH should be a list):
+
+Your output should look like this:
+
+ip_prefix             as_path                                           
+1.0.192.0/18       ['701', '38040', '9737']                          
+1.1.1.0/24           ['701', '1299', '15169']                          
+1.1.42.0/24         ['701', '9505', '17408', '2.1465']                
+1.0.192.0/19       ['701', '6762', '6762', '6762', '6762', '38040', '9737']
+
+Ideally, your logic should be the same for each entry (I say this because once I teach you for loops, then I want to be able to process all of these in one four loop).
+
+If you can't figure this out using a list slice, you could also solve this using pop().
+
+
+IV. You have the following string from "show version" on a Cisco router
+
+cisco_ios = "Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.0(1)M4, RELEASE SOFTWARE (fc1)"
+
+Note, the string is a single line; there is no newline in the string.
+
+How would you process this string to retrieve only the IOS version:
+
+   ios_version = "15.0(1)M4"
+
+
+Try to make it generic (i.e. assume that the IOS version can change). 
+
+You can assume that the commas divide this string into four sections and that the string will always have 'Cisco IOS Software', 'Version', and 'RELEASE SOFTWARE' in it.
+
+
+
+
+
+CLASS OUTLINE
+
+I. Introduction
+
+II. Print and Raw_input
+    A. Printing
+        1. Printing using concatenation
+        2. Format operator
+            a. %s
+            b. %s and column alignment
+            c. %.2f 
+        3. Printing using the format method
+        4. Python2 to Python3 difference
+    B. raw_input
+
+III. Numbers
+     A. Integers
+         1. Arithmetic operators
+         2. Strange behavior of /
+         3. Longs
+     B. Floats
+         1. Exponential notation
+     C. Math functions, math library
+         1. bin()
+         2. hex()
+         3. int(a_var, base)
+         4. import math
+
+IV. Lists and Tuples
+     A. List Basics
+         1. Assignment
+         2. Accessing individual elements
+         3. Negative indices
+         4. Changing elements (mutable)
+         5. len() function
+         6. List concatenation
+     B. List methods
+         1. append()
+         2. pop()
+         3. remove()
+         4. del
+         5. range()
+     C. Slices
+         1. The issue with copying lists
+         2. Slice notation
+     D. Tuples
+
+V. Booleans
+     A. Boolean operators
+
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+
+
+
+
+
+
+Kirk Byers
+Twitter: @kirkbyers
+https://pynet.twb-tech.com
