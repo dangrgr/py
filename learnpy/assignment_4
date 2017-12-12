@@ -1,0 +1,204 @@
+Dan
+
+In this email of Learning Python we are going to cover the following:
+
+      I. Introduction Week4
+         video http://youtu.be/UJmDynoQxps
+         Length is 1 minute
+
+     II. While Loops
+         video http://youtu.be/xnZzrnAQdG0
+         Length is 7 minutes
+
+    III. Dictionaries
+         video http://youtu.be/iGVJmUXcLtI
+         Length is 14 minutes
+
+   IV. Exceptions
+         video http://youtu.be/fCkjmtIq7wU
+         Length is 18 minutes
+
+Make sure that you set your video resolution in YouTube to at least 360p (480p or 720p are better assuming your Internet connection has sufficient bandwidth). The settings button is at the bottom of the video and looks like a little gear.
+
+
+
+
+
+Additional content that you may be interested in:
+
+Content on dictionaries from Google's Python class (skip the 'Files' section we haven't talked about this yet):
+https://developers.google.com/edu/python/dict-files
+
+
+
+Additional content on dictionaries from the, 'Dive Into Python' book:
+http://www.diveintopython.net/native_data_types/
+
+
+
+'Learn Python the Hard Way' has a section on dictionaries as well:
+http://learnpythonthehardway.org/book/ex39.html
+
+
+
+
+
+
+Exercises
+
+Reference code for these exercises is posted at:
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class4
+
+
+
+I. Prompt a user to input an IP address.  Re-using some of the code from class3, exercise4--determine if the IP address is valid.  Continue prompting the user to re-input an IP address until a valid IP address is input.
+
+
+
+II. Parse the below 'show version' data and obtain the following items (vendor, model, os_version, uptime, and serial_number).  Try to make your string parsing generic i.e. it would work for other Cisco IOS devices. 
+
+The following are reasonable strings to look for:
+
+'Cisco IOS Software' for vendor and os_version
+'bytes of memory' for model
+'Processor board ID' for serial_number
+' uptime is ' for uptime
+
+Store these variables (vendor, model, os_version, uptime, and serial_number) in a dictionary.  Print the dictionary to standard output when done.
+
+Note, "Cisco IOS Software...Version 15.0(1)M4...(fc1)" is one line.
+
+>>>>> show version data <<<<<
+Cisco IOS Software, C880 Software (C880DATA-UNIVERSALK9-M), Version 15.0(1)M4, RELEASE SOFTWARE (fc1)
+Technical Support: 
+Copyright (c) 1986-2010 by Cisco Systems, Inc.
+Compiled Fri 29-Oct-10 00:02 by prod_rel_team
+ROM: System Bootstrap, Version 12.4(22r)YB5, RELEASE SOFTWARE (fc1)
+
+twb-sf-881 uptime is 7 weeks, 5 days, 19 hours, 23 minutes
+System returned to ROM by reload at 15:33:36 PST Fri Feb 28 2014
+System restarted at 15:34:09 PST Fri Feb 28 2014
+System image file is "flash:c880data-universalk9-mz.150-1.M4.bin"
+Last reload type: Normal Reload
+Last reload reason: Reload Command
+
+Cisco 881 (MPC8300) processor (revision 1.0) with 236544K/25600K bytes of memory.
+Processor board ID FTX1000038X
+
+5 FastEthernet interfaces
+1 Virtual Private Network (VPN) Module
+256K bytes of non-volatile configuration memory.
+126000K bytes of ATA CompactFlash (Read/Write)
+
+License Info:
+License UDI:
+-------------------------------------------------
+Device#   PID                   SN
+-------------------------------------------------
+*0        CISCO881-SEC-K9       FTX1000038X
+
+License Information for 'c880-data'
+    License Level: advipservices   Type: Permanent
+    Next reboot license Level: advipservices
+
+Configuration register is 0x2102
+>>>>> end <<<<<
+
+
+
+III. Create a program that converts the following uptime strings to a time in seconds.
+
+uptime1 = 'twb-sf-881 uptime is 6 weeks, 4 days, 2 hours, 25 minutes'
+uptime2 = '3750RJ uptime is 1 hour, 29 minutes'
+uptime3 = 'CATS3560 uptime is 8 weeks, 4 days, 18 hours, 16 minutes'
+uptime4 = 'rtr1 uptime is 5 years, 18 weeks, 8 hours, 23 minutes'
+
+For each of these strings store the uptime in a dictionary using the device name as the key.
+
+During this conversion process, you will have to convert strings to integers.  For these string to integer conversions use try/except to catch any string to integer conversion exceptions.
+
+For example:
+int('5') works fine
+int('5 years') generates a ValueError exception.
+
+Print the dictionary to standard output.
+
+
+
+
+
+
+
+Class Outline
+
+I. Introduction
+
+II. While loops
+    A. Why do we need while loops?
+    B. Syntax and structure
+    C. Examples and Infinite loops
+
+III. Dictionaries
+    A. Why do we need dictionaries?
+    B. How to create dictionaries.
+    C. Characteristics of dictionaries
+        1. Order is deterministic, but not predictable by you
+        2. Keys must be unique
+        3. Keys are usually strings
+    D. Dictionary operations
+        1. Assignment
+        2. del
+        3. Trying to access a non-existent key
+        4. .get() method
+        5. Checking if a key is in a dictionary
+    E. Iterating over dictionaries
+        1. .keys()
+        2. .values()
+        3. .items()
+
+IV. Exceptions
+    A. What happens when your program encounters an error?
+    B. How to more gracefully handle errors - try / except
+        1. Syntax and structure - example
+        2. Catching multiple exception types
+        3. except SomeException as e syntax
+    C. Things to be careful of
+
+
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+Week2
+Introduction
+Print and raw_input
+Numbers 
+Lists and Tuples 
+Booleans
+
+Week3
+Introduction
+If Conditionals
+For Loops
+Passing Arguments into a Script
+
+
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
