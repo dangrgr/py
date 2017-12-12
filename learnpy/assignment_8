@@ -1,0 +1,276 @@
+In this email of Learning Python we are going to cover the following:
+
+    I. Modules (Part 1)
+         video http://youtu.be/FanwaY25Kkc
+         Length is 13 minutes
+
+    II. Modules (Part 2)
+        video http://youtu.be/qG-MxgakbE8
+        Length is 6 minutes
+
+    III. Packages
+        video http://youtu.be/3QO1mQy-LRE
+        Length is 13 minutes
+
+
+Make sure that you set your video resolution in YouTube to at least 360p.  The resolution button is at the bottom of the video and looks like a little gear.
+
+
+
+
+
+
+
+Python Humor
+
+# try it :-)
+from __future__ import braces
+
+
+
+
+
+
+
+Additional content that you may be interested in:
+
+One thing that I forgot to mention in the videos--Python modules (files) and packages (directories that contain __init__.py) must follow Python naming rules or else you will not be able to import them.  For example:
+
+# You can execute the file test-zzz.py, but you cannot import it because test-zzz is not 
+# a valid name in Python (hyphens are not allowed in a Python name).
+$ python test-zzz.py 
+hello world
+
+$ python
+>>> import test-zzz
+  File "<stdin>", line 1
+    import test-zzz
+               ^
+SyntaxError: invalid syntax
+
+# Just rename this file to be test_zzz.py (which is a valid Python name)
+$ mv test-zzz.py test_zzz.py
+$ python
+>>> import test_zzz
+hello world
+
+
+
+Good article on the differences between Python2 and Python3:
+Key differences between Python 2.7.x and Python 3.x
+
+
+
+David Gee (@LSP42) has a good blog post on network automation and learning Python:
+http://ipengineer.net/2014/05/from-cli-to-python-beginner/
+
+
+
+Note, I had trouble finding a good document on modifying the PYTHONPATH in Windows.  Here is how you can modify the PYTHONPATH environment variable using the 'set' command (tested on Windows XP, but this should also work on Windows7).  This is from the 'command prompt' and is only usable during that command prompt session.
+
+# Shows my current PYTHONPATH
+C:\Python27>set PYTHONPATH
+PYTHONPATH=C:\Python27\Lib;C:\Python27\DLLs;C:\Python27\Scripts
+
+# Sets a new PYTHONPATH (appending to the current %pythonpath%)
+C:\Python27>set PYTHONPATH=%pythonpath%;C:\Python27\ktb;
+
+# Checks that the PYTHONPATH is right
+C:\Python27>set PYTHONPATH
+PYTHONPATH=C:\Python27\Lib;C:\Python27\DLLs;C:\Python27\Scripts;C:\Python27\ktb;
+
+# Test that it works correctly (C:\Python27\ktb contains z_test.py)
+C:\Python27>python
+>>> import z_test
+Hello world
+
+You can also permanently modify this PYTHONPATH variable by editing your Windows Environment Variables (the below link shows you how to edit Environment Variables in Windows7).  On my old Windows XP system, PYTHONPATH is a 'System Variable' (NOT a User Variable) and is set to:
+
+    PYTHONPATH = C:\Python27\Lib;C:\Python27\DLLs;C:\Python27\Scripts
+
+Be careful when editing your system's Environment Variables--you can cause significant problems with your computer (if done incorrectly).
+
+
+
+
+
+
+
+
+Exercises
+
+Reference code for these exercises is posted on GitHub at:
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class8
+
+
+
+I. Re-using the IP address validation function created in Class #6, exercise3; create a Python module that contains only this one ip validation function.
+
+     A. Modify this Python module such that you add a set of tests into the module.  Use the __name__ == '__main__' technique to separate the test code from the function definition.  In your test code, verify your IP address validation function against each of the following IP addresses (False means it is an invalid IP address; True means it is a valid IP address).
+
+    test_ip_addresses = {
+        '192.168.1' : False,
+        '10.1.1.' : False,
+        '10.1.1.x' : False,
+        '0.77.22.19' : False,
+        '-1.88.99.17' : False,
+        '241.17.17.9' : False,
+        '127.0.0.1' : False,
+        '169.254.1.9' : False,
+        '192.256.7.7' : False,
+        '192.168.-1.7' : False,
+        '10.1.1.256' : False,
+        '1.1.1.1' : True,
+        '223.255.255.255': True,
+        '223.0.0.0' : True,
+        '10.200.255.1' : True,
+        '192.168.17.1' : True,
+    }
+
+
+     B. Execute this module--make sure all of the tests pass.
+
+     C. Import this module into the Python interpreter shell.  Make sure the test code does not execute.  Also test that you can still correctly call the ip validation function.
+
+
+
+
+
+II. On GitHub, there is the following show version output:
+
+https://github.com/ktbyers/pynet/blob/master/learnpy_ecourse/class8/show_version.txt
+
+    A. Create three functions in three separate modules and put them in a show_version directory (in practice you wouldn't do this--you would just have them all in one file, but this will let you experiment with packages).
+
+            1. Function1 = obtain_os_version -- process the show version output and return the OS version (Version 15.0(1)M4) else return None.
+
+            2. Function2 = obtain_uptime -- process the show version output and return the network device's uptime string (uptime is 12 weeks, 5 days, 1 hour, 4 minutes) else return None.
+
+            3. Function3 = obtain_model -- process the show version output and return the model (881) else return None.
+
+
+
+    B. Make a package out of this 'show_version' directory using a blank __init__.py file.
+
+            1. Now that this package has been created, test importing each of the modules individually from the parent directory.  In other words, you have a parent directory that contains the following:
+
+.
+./show_version
+./show_version/__init__.py
+./show_version/os_version.py
+./show_version/model.py
+./show_version/uptime.py
+
+From the parent directory go into the Python interpreter shell and make sure you can do the following:
+
+>>> import show_version.os_version
+>>> import show_version.model
+>>> import show_version.uptime
+
+
+            2. Now edit the __init__.py file such that it automatically loads each of the modules.  In other words, you should be able to type:
+
+>>> import show_version
+
+and have all of your functions available as follows:
+
+>>> show_version.obtain_model(show_ver_data)
+>>> show_version.obtain_os_version(show_ver_data)
+>>> show_version.obtain_uptime(show_ver_data)
+
+
+    C. Write a script that processes the show_version output using this package.  It should return something similar to the following:
+
+        model:            881
+        os_version:    Version 15.0(1)M4
+        uptime:           uptime is 12 weeks, 5 days, 1 hour, 4 minutes
+
+
+
+
+
+III. Experiment with modifying your PYTHONPATH.  Modify your PYTHONPATH such that the Python module you created in exerciseI is importable (from outside your current working directory).  
+
+
+
+
+
+
+CLASS OUTLINE
+
+I. Modules (Part1)
+    A. What is a module?
+    B. Why do we need modules?
+        1. Re-using other people's code
+        2. Re-using your own code
+    C. Two ways of importing a module (import and from)
+    D. What happens when a module is imported?
+
+II. Modules (Part2)
+    A. A module has its own namespace
+    B. Using __name__ == '__main__' to separate executable code from importable code
+
+III. How Python finds libraries
+    A. Modifying the PYTHONPATH
+
+IV. Packages
+    A. What is a package?
+    B. The __init__.py file
+    C. A package allows modules in the package directory to be imported
+    D. Processing of __init__.py
+    E. Adding other import statements into __init__.py
+
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+Week2
+Introduction
+Print and raw_input
+Numbers 
+Lists and Tuples 
+Booleans
+
+Week3
+Introduction
+If Conditionals
+For Loops
+Passing Arguments into a Script
+
+Week4
+Introduction
+While Loops
+Dictionaries
+Exceptions
+
+Week5
+Class Review (weeks 1 - 4)
+
+Week6
+Introduction
+Functions, Part1
+Namespaces
+Functions, Part2
+
+Week7
+Files
+Regular Expressions
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
