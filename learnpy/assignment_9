@@ -1,0 +1,248 @@
+In this email of Learning Python we are going to cover the following:
+
+      I. Introduction
+         video http://youtu.be/69w7HO5cpvE
+         Length is 2 minutes
+
+     II. Classes and Objects (Part1)
+         video http://youtu.be/TAACEw69jBw
+         Length is 14 minutes
+
+    III. Classes and Objects (Part2)
+         video http://youtu.be/h8jlJ1kb_mY
+         Length is 23 minutes
+
+Make sure that you set your video resolution in YouTube to at least 360p.  The resolution button is at the bottom of the video and looks like a little gear.
+
+
+
+
+
+
+
+Additional content that you may be interested in:
+
+Understanding object-oriented programming can be hard (probably harder than it should be).  The terminology is new and can be difficult to understand.  Also, a lot of the Internet articles on Python object-oriented programming are not very good for beginners.  They can presuppose too much background knowledge, not be precise enough, not understand the context of a beginner.
+
+Because of the above, I had to search around to find good articles on Python and object-oriented programming.
+
+If you are interested in understanding object-oriented programming at least at a beginner level, I recommend that you read both of the below two links and experiment with creating classes, objects, and methods.
+
+    
+
+Learn Python the Hard Way, Exercise 40: Modules, Classes, and Objects:
+
+http://learnpythonthehardway.org/book/ex40.html
+
+
+
+Introduction to OOP with Python (this is very good):
+
+http://www.voidspace.org.uk/python/articles/OOP.shtml
+
+
+
+
+
+
+
+Exercises
+
+Reference code for these exercises is posted on GitHub at:
+https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class9
+
+
+
+I. Create a Python class representing an IPAddress.  The class should have only one initialization variable--an IP address in dotted decimal formation.  You should be able to do the following with your class:
+
+>>> test_ip = IPAddress('192.168.1.1')
+>>> test_ip.ip_addr
+'192.168.1.1'
+
+    A. Write a method for this class that returns the IP address in dotted binary format (each octet should be eight binary digits in length).
+
+>>> test_ip.display_in_binary()
+'11000000.10101000.00000001.00000001'
+
+    B. Write a method for this class that returns the IP address in dotted hex format (each octet should be two hex digits in length).
+
+>>> test_ip.display_in_hex()
+'c0.a8.01.01'
+
+    C. Re-using the IP address validation code from class8, exercise1--create an is_valid() method that returns either True or False depending on whether the IP address is valid.
+
+>>> test_ip.is_valid()
+True
+
+
+
+
+
+II. Create an Uptime class that takes in a Cisco IOS uptime string and parses the string into years, weeks, days, hours, minutes (assigning these as attributes of the object).  For example:
+
+>>> test_obj = Uptime('twb-sf-881 uptime is 6 weeks, 4 days, 2 hours, 25 minutes')
+>>> test_obj.years
+0
+>>> test_obj.weeks
+6
+>>> test_obj.days
+4
+>>> test_obj.hours
+2
+>>> test_obj.minutes
+25
+
+
+
+You class should be able to process the following four uptime strings:
+
+'twb-sf-881 uptime is 6 weeks, 4 days, 2 hours, 25 minutes'
+'3750RJ uptime is 1 hour, 29 minutes'
+'CATS3560 uptime is 8 weeks, 4 days, 18 hours, 16 minutes'
+'rtr1 uptime is 5 years, 18 weeks, 8 hours, 23 minutes'
+
+
+    A. Create a method for this class that returns the uptime in seconds.
+
+>>> test_obj.uptime_seconds()
+3983100
+
+
+
+
+
+III. Write a new class, IPAddressWithNetmask, that is based upon the IPAddress class created in exercise1 (i.e. use inheritance).  The netmask should be stored in slash notation (i.e. /24).  With this class you should be able to do the following:
+
+>>> test_ip2 = IPAddressWithNetmask('172.31.255.1/24')
+>>> test_ip2.ip_addr
+'172.31.255.1'
+>>> test_ip2.netmask
+'/24'
+
+
+
+If possible, the ip_addr attribute should be assigned via the __init__ method in the IPAddress Class (in other words, call the __init__ method of the base IPAddress class with '172.31.255.1' as an argument).
+
+All of the other methods from the IPAddress class should be left unchanged.
+
+
+
+    A. Create a new method in the IPAddressWithNetmask class that converts the slash notation netmask to dotted decimal.
+
+    B. You should be able to do the following when you are done:
+
+>>> test_ip2 = IPAddressWithNetmask('172.31.255.1/24')
+>>> test_ip2.ip_addr
+'172.31.255.1'
+>>> test_ip2.netmask
+'/24'
+
+>>> test_ip2.display_in_binary()
+'10101100.00011111.11111111.00000001'
+>>> test_ip2.display_in_hex()
+'ac.1f.ff.01'
+>>> test_ip2.is_valid()
+True 
+
+>>> test_ip2.netmask_in_dotdecimal()
+'255.255.255.0'
+
+
+
+
+
+
+
+
+
+TABLE OF CONTENTS
+
+I. Introduction
+
+II. Classes and objects (Part1)
+    A. Creating classes
+        1. The class statement
+        2. Use CapWords for the class name
+        3. Inherit from 'object'
+        4. New style classes versus old style classes
+        5. Creating objects
+        6. The __init__() method
+        7. The meaning of self
+    B. Terminology
+        1. Class
+        2. Object
+        3. Data Attribute
+        4. Methods
+
+III. Classes (Part2)
+    A. Creating methods in a class
+        1. Very similar to a function ('def' keyword)
+        2. First parameter is always the object itself (by convention named 'self')
+        3. You call methods by using object_name.method_name()
+    B. Inheritance
+        1. Simple inheritance
+        2. What happens with __init__()
+        3. Over-writing the __init__() method in the subclass
+        4. Calling the parent's __init__() method
+        5. Over-writing a method in the subclass.
+
+
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+Week2
+Introduction
+Print and raw_input
+Numbers 
+Lists and Tuples 
+Booleans
+
+Week3
+Introduction
+If Conditionals
+For Loops
+Passing Arguments into a Script
+
+Week4
+Introduction
+While Loops
+Dictionaries
+Exceptions
+
+Week5
+Class Review (weeks 1 - 4)
+
+Week6
+Introduction
+Functions, Part1
+Namespaces
+Functions, Part2
+
+Week7
+Files
+Regular Expressions
+
+Week8
+Modules - Part1
+Modules - Part2
+Packages
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
