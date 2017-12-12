@@ -1,0 +1,143 @@
+We are now entering the second half of the Learning Python Course. 
+
+The second half of this course includes some important content for improving your Python programming. In particular, Class6 on Functions and Namespaces, Class8 on Modules, and Class9 on Classes and Objects.
+
+
+In this email of Learning Python we are going to cover the following:
+
+    I. Introduction Week6
+         video http://youtu.be/sjYBE6EWwuc
+         Length is 3 minutes
+
+    II. Functions, Part1
+        video http://youtu.be/i1MzASLYOZY
+        Length is 12 minutes
+
+    III. Namespaces
+        video http://youtu.be/r8U3_KkvKtw
+        Length is 10 minutes
+
+    IV. Functions, Part2
+        video http://youtu.be/pRaVagkh9l8
+        Length is 12 minutes
+
+
+
+
+Additional content that you may be interested in
+
+There is a good chapter on functions in "Learn Python the Hard Way" (I would stop after you finish, "What You Should See").
+  http://learnpythonthehardway.org/book/ex18.html
+
+Darren O'Connor has a blog on "Defined Functions - Python". 
+  http://mellowd.co.uk/ccie/?p=5118
+
+
+
+
+
+Exercises
+
+Reference code for these exercises is posted on GitHub at:
+  https://github.com/ktbyers/pynet/tree/master/learnpy_ecourse/class6
+
+
+1. Create a function that returns the multiplication product of three parameters--x, y, and z. z should have a default value of 1.
+    a. Call the function with all positional arguments.
+    b. Call the function with all named arguments.  
+    c. Call the function with a mix of positional and named arguments.
+    d. Call the function with only two arguments and use the default value for z.
+
+
+2. Write a function that converts a list to a dictionary where the index of the list is used as the key to the new dictionary (the function should return the new dictionary).
+
+
+3a.Convert the IP address validation code (Class4, exercise1) into a function, take one variable 'ip_address' and return either True or False (depending on whether 'ip_address' is a valid IP). Only include IP address checking in the function--no prompting for input, no printing to standard output.
+
+
+3b. Import this IP address validation function into the Python interpreter shell and test it (use both 'import x' and 'from x import y').
+
+
+4. Create a function using your dotted decimal to binary conversion code from Class3, exercise1. In the function--do not prompt for input and do not print to standard output. The function should take one variable 'ip_address' and should return the IP address in dotted binary format always padded to eight binary digits (for example, 00001010.01011000.00010001.00010111). You might want to create other functions as well (for example, the zero-padding to eight binary digits).
+
+
+5. Write a program that prompts a user for an IP address, then checks if the IP address is valid, and then converts the IP address to binary (dotted decimal format). Re-use the functions created in exercises 3 and 4 ('import' the functions into your new program).
+
+
+
+
+
+Class Outline
+
+I. Introduction
+    A. Why write functions?
+
+II. Functions Part1
+    A. Function with no parameters
+        1. Syntax and structure
+        2. Calling the function
+        3. Return value
+        4. Using the return value
+        5. Docstrings
+
+    B. Function with parameters
+        1. Syntax
+        2. Default values
+
+    C. Various ways of passing arguments to functions
+        1. Positional arguments
+        2. Named arguments
+        3. Mixing positional and named arguments
+
+III. Python Namespaces
+     A. Functions create their own namespace
+     B. Name resolution order
+
+IV. Functions Part2
+     A. Using lists and dicts as function arguments
+     B. Importing a function
+
+
+
+
+
+Video Archive
+
+Week1
+Introduction and Some Questions
+What is the Nature of Python  
+Interpreter Shell, Variables, and Assignment  
+Strings
+
+Week2
+Introduction
+Print and raw_input
+Numbers 
+Lists and Tuples 
+Booleans
+
+Week3
+Introduction
+If Conditionals
+For Loops
+Passing Arguments into a Script
+
+Week4
+Introduction
+While Loops
+Dictionaries
+Exceptions
+
+Week5
+Class Review (weeks 1 - 4)
+
+
+
+
+
+
+
+
+Kirk Byers
+https://pynet.twb-tech.com
+Twitter: @kirkbyers
