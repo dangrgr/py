@@ -21,7 +21,7 @@ password = getpass()
 # examples
 
 # update syslog (put)
-#url = 'https://192.168.56.32/mgmt/tm/sys/syslog~Common~compress_pool'
+#url = 'https://192.168.56.32/mgmt/tm/sys/syslog'
 sys_syslog_dict = {"remoteServers": [{"name": "remotesyslog1","host": "192.168.1.2","remotePort": 514}]}
 sys_syslog_dict["remoteServers"][0]["local-ip"] = "192.168.1.2"
 
