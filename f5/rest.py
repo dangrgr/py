@@ -1,4 +1,12 @@
 #F5 REST API playground
+
+# Docs
+# 1) https://support.f5.com/csp/article/K13225405#pool <-- easy to follow examples
+# 2) https://clouddocs.f5.com/training/community/programmability/html/ <-- F5 clouddocs programibility
+# 3) https://clouddocs.f5.com/training/community/programmability/html/class2/class2.html <-- F5 clouddocs continuous delivery
+# 4) https://devcentral.f5.com/questions/rest-api-call-to-set-remote-syslog-server-54889 <-- set syslog example
+# 5) https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/using-as3.html <-- AS3!
+
 import requests
 import json
 from pprint import pprint
