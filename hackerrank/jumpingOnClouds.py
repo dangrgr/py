@@ -31,11 +31,11 @@ def jumpingOnClouds(c):
     i = 0
     while i < n - 1:
         if i + 2 >=n or c[i + 2] == 1:   #not possible to jump 2 clouds
-            #print("skip")
+            #print("no skip")
             i += 1
             hops += 1
         else:
-            #print("no skip")
+            #print("skip")
             i += 2
             hops += 1
 
