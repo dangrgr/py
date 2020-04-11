@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-# repeaded-string
-# From: https://www.hackerrank.com/challenges/repeated-string/problem
+# https://www.hackerrank.com/challenges/repeated-string/
 
 s = "aba"
 n = 10
