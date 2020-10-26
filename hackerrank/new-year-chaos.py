@@ -1,4 +1,6 @@
-#!/bin/python3
+#!/usr/bin/env python3
+# https://www.hackerrank.com/challenges/new-year-chaos/problem?isFullScreen=false
+
 import string
 import math
 import os
