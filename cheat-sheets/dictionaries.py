@@ -47,9 +47,8 @@ print(student.values())
 # items method, returns pairs of keys and values as list of tuples; can be itterated with 'for k, v in student.items():'
 print(student.items())
 
-# Comprehensions:
 
-
+# Dictionary Comprehension Example
 a_dict = {'name': 'John', 'age': '27', 'sex': 'Male'}
 
 # convert dictionarty to list
@@ -63,3 +62,13 @@ def list_to_dict(list):
 a_list = dict_to_list(a_dict)
 print(list_to_dict(a_list))
 
+
+# Example of looping through dictionary in a for loop
+
+# only returns the keys
+for i in a_dict:
+    print(i)
+
+# returns key and value pairs
+for k,v in a_dict.items():
+    print(k + ':',v)
