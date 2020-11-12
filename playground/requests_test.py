@@ -1,4 +1,5 @@
 # Playing with requests along with Youtube playlist: https://www.youtube.com/watch?v=ET-RYAYl3GU&list=PLJ1odve0o6dX5ndJ5lwiCOR58ycB1rcrV&index=1
+# https://stackoverflow.com/questions/25214959/cookie-authentication-with-python-requests
 import requests
 
 # # Session
